@@ -44,3 +44,62 @@ or follow this video:[Add facebook auth](https://youtu.be/eTpkgNBmrX8)
 3. Twitter
 
 Follow this video:[Add Twitter Auth](https://www.youtube.com/watch?v=Z6ibMSJIwlk&t)
+
+### Snippet  Providers Configutation Module Array.
+
+``` 
+
+providers: [
+    EmailProvider({
+      server: {
+        host: process.env.EMAIL_SERVER_HOST,
+        port: process.env.EMAIL_SERVER_PORT,
+        auth: {
+          user: process.env.EMAIL_SERVER_USER,
+          pass: process.env.EMAIL_SERVER_PASSWORD,
+        },
+        from: process.env.EMAIL_FROM,
+      },
+      from: process.env.EMAIL_FROM,
+      sendVerificationRequest({ identifier, url, provider }) {
+        console.log("sendVerificationRequest", identifier, url, provider);
+        CustomsendVerificationRequest({
+          identifier,
+          url,
+          provider,
+        }).then((res) => {
+          console.log("sendVerificationRequest", res);
+        });
+      },
+      
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
+    }),
+    FacebookProvider({
+      clientId: process.env.FACEBOOK_ID,
+      clientSecret: process.env.FACEBOOK_SECRET,
+    }),
+    TwitterProvider({
+      clientId: process.env.TWITTER_ID,
+      clientSecret: process.env.TWITTER_SECRET,
+    }),
+    AppleProvider({
+      clientId: process.env.APPLE_ID,
+      clientSecret: process.env.APPLE_SECRET,
+    }),
+    GithubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+      // https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps
+      // @ts-ignore
+      scope: "read:user",
+    }),
+    LinkedInProvider({
+      clientId: process.env.LINKEDIN_ID,
+      clientSecret: process.env.LINKEDIN_SECRET,
+    }),
+  ]
+  
+  ```
