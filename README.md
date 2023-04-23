@@ -1,4 +1,4 @@
-# OAuth Integration with Popular Providers - SSO.
+# OAuth Integration with Popular Providers serving SSO.
 
 ### Setup for popular auth providers
 
